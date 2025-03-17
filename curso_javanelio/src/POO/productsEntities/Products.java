@@ -5,6 +5,17 @@ public class Products {
     public int quantity;
     public double price;
 
+    public Products(String name, double price, int quantity){
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public Products(String name, double price){
+        this.name = name;
+        this.price = price;
+    }
+
     public double totalValueInStock(){
         return quantity * price;
     }
@@ -21,6 +32,6 @@ public class Products {
         return "Product data: " + name +
                 ", $ " + String.format("%.2f", price) +
                 ", quantity: " + quantity +
-                ", Total: " + String.format("%.2f", totalValueInStock());
+                ", Total: " + String.format("$ %.2f", totalValueInStock());
     }
 }

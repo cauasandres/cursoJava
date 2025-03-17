@@ -9,15 +9,12 @@ public class productsMain {
         Locale.setDefault(Locale.US);
         Scanner input = new Scanner(System.in);
 
-        Products products = new Products();
-
         System.out.println("Enter products data:");
         System.out.print("Name: ");
-        products.name = input.nextLine();
-        System.out.print("Quantity: ");
-        products.quantity = input.nextInt();
+        String name = input.nextLine();
         System.out.print("Price: ");
-        products.price = input.nextDouble();
+        double price = input.nextDouble();
+        Products products = new Products(name, price);
 
         System.out.println(products);
 
@@ -25,11 +22,13 @@ public class productsMain {
         System.out.print("Enter the number of products to be added in stock: ");
         int quantity = input.nextInt();
         products.addProducts(quantity);
+        System.out.println("Updated data: " + products);
 
-        System.out.println("Enter the number of products to be removed in stock");
+        System.out.println();
+
+        System.out.print("Enter the number of products to be removed in stock: ");
         quantity = input.nextInt();
         products.removeProducts(quantity);
-
         System.out.println("Updated data: " + products);
 
         input.close();
