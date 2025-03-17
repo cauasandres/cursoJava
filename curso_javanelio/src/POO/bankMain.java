@@ -1,53 +1,45 @@
 package POO;
-
+import POO.bankEntities.Bank;
 import java.util.Scanner;
 import java.util.Locale;
 
-import POO.bankEntities.Bank;
 
 public class bankMain {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
-        Scanner input = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        Bank config = new Bank();
+        System.out.print("Enter account number: ");
+        int account = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Enter account holder: ");
+        String name = sc.nextLine();
+        Bank config = new Bank(account, name);
 
-        System.out.println("""
-                Welcome to Sandres Bank!
-                 \
-                Let's register in our bank.
-                Enter your name:\s""");
+        System.out.print("Is there na initial deposit (y/n)? ");
+        String resp = sc.nextLine();
 
-        config.name = input.nextLine(); // Custumer enter the name
-        String firstName = config.name.split(" ")[0];
-        String formattedName = firstName.substring(0, 1).toUpperCase() + firstName.substring(1).toLowerCase(); // Program takes only the first name
-
-        System.out.println();
-        System.out.printf("Nice to meet you, %s!\n", formattedName);
-
-        System.out.println();
-        System.out.print("Register your password (just numbers): ");
-        config.password = input.nextInt(); // CUSTOMER REGISTRATION PASSWORD
-
-        System.out.print("What value do you want to deposit: ");
-        config.bankBalance = input.nextDouble(); // Customer deposits a value
-
-        System.out.println("Digite a senha");
-        int password = input.nextInt();
-
-        for(int i = 2; password != config.password && i != 0; i--){  // password test
-            System.out.printf("Senha incorreta, restam %d tentativas: ", i);
-            password = input.nextInt();
-
-
+        double balance;
+        if (resp.equals("y")){
+            System.out.print("Enter initial deposit value: ");
+            balance = sc.nextDouble();
+            config.setBalanceDeposit(balance);
         }
 
         System.out.println();
-        if (config.password == password){
-            System.out.printf("Available balance: %.2f\n", config.bankBalance);
-        }
+        System.out.println("Account data:\n" + config);
 
+        System.out.print("Enter a deposit value: ");
+        balance = sc.nextDouble();
+        config.setBalanceDeposit(balance);
 
-        input.close();
+        System.out.println();
+        System.out.println("Updated data:\n" + config);
+
+        System.out.print("Enter a withdraw value: ");
+        balance = sc.nextDouble();
+        config.setBalanceWithdraw(balance);
+
+        System.out.println("Updated data\n" + config);
     }
 }
