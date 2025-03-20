@@ -41,5 +41,7 @@ public class bankMain {
         config.setBalanceWithdraw(balance);
 
         System.out.println("Updated data\n" + config);
+
+        sc.close();
     }
 }
