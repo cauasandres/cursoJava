@@ -27,7 +27,7 @@ public class Entities {
         return avg = height / n;
     }
 
-    public double AverageMinors(double minors, int n){
+    public static double AverageMinors(double minors, int n){
         return (minors / n) * 100;
     }
 }
