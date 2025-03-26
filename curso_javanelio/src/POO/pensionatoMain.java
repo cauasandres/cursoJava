@@ -8,7 +8,7 @@ public class pensionatoMain {
 
         String name, email;
         int room, n;
-        Entities [] vect = new Entities[9];
+        Entities [] vect = new Entities[10];
 
         System.out.print("How many rooms will be rented? ");
         n = input.nextInt();
