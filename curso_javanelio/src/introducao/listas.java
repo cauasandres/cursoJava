@@ -1,37 +1,71 @@
 package introducao;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Scanner;
 
 public class listas {
     public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
 
         List<String> list = new ArrayList<>();
 
-        list.add("Arnaldo");
-        list.add("Claudia");
-        list.add("Majoroca");
-        list.add("Anna");
-        list.add("Caua");
-        list.add("Marcos");
+        int x = input.nextInt();
+        input.nextLine();
 
+        String name;
+        for (int i = 0; i < x; i++) {
 
-        for(String x : list){
-            System.out.println(x);
-        }
-        System.out.println("===================================");
+            name = input.nextLine();
 
-        list.removeIf(x -> x.charAt(0) == 'A');
-        for (String x : list){
-            System.out.println(x);
-        }
-        System.out.println("===================================");
-
-        List<String> filter = list.stream().filter(x -> x.charAt(0) == 'M').collect(Collectors.toList());
-        for (String x : filter){
-            System.out.println(x);
+            list.add(name);
         }
 
+        System.out.println("===============================");
 
+        for(String x2 : list){
+            System.out.println(x2);
+        }
+
+        System.out.println("===============================");
+
+        char af;
+
+        do {
+
+            System.out.println("Deseja add mais? ");
+            af = Character.toUpperCase(input.next().charAt(0));
+
+            input.nextLine();
+
+            switch (af) {
+                case 'S':
+                    System.out.println("Quantos? ");
+                    x = input.nextInt();
+
+                    input.nextLine();
+                    for (int i = 0; i < x; i++) {
+                        name = input.nextLine();
+                        list.add(name);
+                    }
+                    break;
+
+                case 'N':
+                    System.out.println("Ok");
+                    break;
+
+            }
+
+            if(af != 'N' && af != 'S'){
+                System.out.println("Resposta invalida, digite 'SIM' ou 'NAO': ");
+            }
+        } while(af != 'N');
+
+        System.out.println("=====================");
+        System.out.println("Lista final:");
+        for(String x2 : list){
+            System.out.println(x2);
+        }
+
+        input.close();
     }
 }
